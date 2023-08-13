@@ -7,7 +7,7 @@ document.getElementById("btn").addEventListener("click",function () {
 
     console.log("Request started")
 
-    var http = new XMLHttpRequest();
+    let http = new XMLHttpRequest();
     console.log(http.readyState, "After the html Object");
 
     http.open("GET","/Advanced API/OnlineMaterial/Ajax/db/db.txt")

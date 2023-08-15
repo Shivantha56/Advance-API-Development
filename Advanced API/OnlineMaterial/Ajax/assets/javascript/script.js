@@ -11,8 +11,8 @@ document.getElementById("btn").addEventListener("click",function () {
     // console.log(http.readyState, "After the html Object");
     // console.log(http.status, "After the html Object");//prints the response status code
     //
-    http.open("GET","/Advanced API/OnlineMaterial/Ajax/db/db.txt",false);// false = syncronous (blocking)
-    console.log(http.status);
+    http.open("GET","/Advanced API/OnlineMaterial/Ajax/db/db.txt",true);// false = synchronous (blocking)
+    // console.log(http.status);
     // console.log(http.readyState, "After the html open");
     //
     http.send();
@@ -33,6 +33,7 @@ document.getElementById("btn").addEventListener("click",function () {
     //     }
     //
     // }
+
 
     console.log(http.responseText);
     console.log("Request finished")

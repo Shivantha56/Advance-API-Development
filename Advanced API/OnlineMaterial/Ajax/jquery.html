@@ -8,6 +8,7 @@
 
 <h1>Hello ajax!...</h1>
 <button type="button" id="btn">Click</button>
+<p id="desc"></p>
 
 <script  src="/assets/Jquery/code.jquery.com_jquery-3.7.0.min.js"></script>
 <script>
@@ -18,8 +19,12 @@
            url:"db/db.txt",
             success:function (resp) {
                 console.log(resp)
-            }
+                $('#desc').text(resp);
+            },
+            async:true
         });
+
+
 
     })
 

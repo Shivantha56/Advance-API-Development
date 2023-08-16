@@ -3,27 +3,110 @@
 <head>
     <meta charset="UTF-8">
     <title>Ajax with jquery</title>
+    <link rel="stylesheet" href="assets/boostrap/bootstrap-5.3.0-dist/css/bootstrap.min.css">
 </head>
 <body>
 
 <h1>Hello ajax!...</h1>
-<button type="button" id="btn">Click</button>
-<p id="desc"></p>
+<button type="button" id="btn1">Click</button>
+<p id="desc1">Request to txt file</p>
 
-<script  src="/assets/Jquery/code.jquery.com_jquery-3.7.0.min.js"></script>
+<hr>
+
+<button type="button" id="btn2">Click</button>
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">id</th>
+        <th scope="col">name</th>
+        <th scope="col">address</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    </tbody>
+</table>
+<script src="/assets/Jquery/code.jquery.com_jquery-3.7.0.min.js"></script>
 <script>
-    $('#btn').click(function () {
+    $('#btn1').click(function () {
 
 
         $.ajax({
-           url:"db/db.txt",
-            success:function (resp) {
+            url: "db/db.txt",
+            success: function (resp) {
                 console.log(resp)
-                $('#desc').text(resp);
+                $('#desc1').text(resp);
             },
-            async:true
+            async: true
         });
+    })
+    $('#btn2').click(function () {
 
+
+        $.ajax({
+            url: "db/db.xml",
+            success: function (resp) {
+                console.log(resp);
+                //enter functions
+               //
+               //  for (let i = 0; i < $(resp).children().children().length; i++) {
+               //
+               //      for (let j = 0; j <$(resp).children().children()[i].children.length; j++) {
+               //
+               //          let textContents = $(resp).children().children()[i].children.item(j).textContent;
+               //          console.log(textContents);
+               //
+               //          let row = document.getElementsByTagName("tbody")[0].insertRow(i);
+               //          row.insertCell(j).textContent = textContents;
+               //
+               //
+               //
+               //      }
+               //
+               //
+               //  }
+               //
+               //  //My way
+               //  // let length = $(resp).children().children().length;
+               // let length = $(resp).children().children()[0].children.length;
+               //  let child = $(resp).children().children();
+               //  // console.log(length);
+               //  // console.log(child);
+               //
+               //
+               //  let children = $(resp).children().children()[0].children.item(0).textContent;
+               //  // console.log(children);
+
+
+                // Lecture method
+
+                for (let i = 0; i < $(resp).children().children().length; i++) {
+
+                    let id = $(resp).children().children().eq(i).find("id").text();
+                    let name = $(resp).children().children().eq(i).find("name").text();
+                    let address = $(resp).children().children().eq(i).find("address").text();
+
+                    console.log(id,name,address);
+
+                    let row = document.getElementsByTagName("tbody")[0].insertRow(i);
+                    row.innerHTML = " <tr>\n" +
+                        `        <th scope=\"row\">1</th>\n` +
+                        `        <td>${id}</td>\n` +
+                        `        <td>${name}</td>\n` +
+                        `        <td>${address}</td>\n`  +
+                        "    </tr>"
+
+                }
+
+
+
+            },
+            async: true,
+            error: function (xhr) {
+                console.log(xhr);
+            }
+        });
 
 
     })
@@ -32,7 +115,6 @@
 
 
 </script>
-
 
 
 </body>

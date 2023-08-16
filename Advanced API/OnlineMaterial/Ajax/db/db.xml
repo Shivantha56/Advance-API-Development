@@ -1,0 +1,14 @@
+<customers>
+    <customer>
+        <id>C001</id>
+        <name>Dilshan</name>
+        <address>Panaduara</address>
+<!--        <salary>10,000</salary>-->
+    </customer>
+    <customer>
+        <id>C002</id>
+        <name>Shivantha</name>
+        <address>Colombo</address>
+<!--        <salary>20,000</salary>-->
+    </customer>
+</customers>

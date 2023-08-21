@@ -20,6 +20,7 @@ $("#button02").click(function () {
     $("#table01>tr").empty();
     $.ajax({
         url: "http://localhost:8080/GDSE02/hello",
+        method:"POST",
         success: function (resp) {
 
         },

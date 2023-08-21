@@ -4,72 +4,12 @@
     <facet type="web" name="Web">
       <configuration>
         <descriptors>
+          <deploymentDescriptor name="web.xml" url="file://$MODULE_DIR$/web/web/web/WEB-INF/web.xml" />
           <deploymentDescriptor name="web.xml" url="file://$MODULE_DIR$/web/web/WEB-INF/web.xml" />
           <deploymentDescriptor name="web.xml" url="file://$MODULE_DIR$/web/WEB-INF/web.xml" />
         </descriptors>
         <webroots>
           <root url="file://$MODULE_DIR$/web" relative="/" />
-        </webroots>
-      </configuration>
-    </facet>
-    <facet type="web" name="Web3">
-      <configuration>
-        <descriptors>
-          <deploymentDescriptor name="web.xml" url="file://$MODULE_DIR$/Advanced API/OnlineMaterial/JavaEE/01_HelloServlet/web/WEB-INF/web.xml" />
-        </descriptors>
-        <webroots>
-          <root url="file://$MODULE_DIR$/Advanced API/OnlineMaterial/JavaEE/01_HelloServlet/web" relative="/" />
-        </webroots>
-      </configuration>
-    </facet>
-    <facet type="web" name="Web2">
-      <configuration>
-        <descriptors>
-          <deploymentDescriptor name="web.xml" url="file://$MODULE_DIR$/Advanced API/OnlineMaterial/JavaEE/JavaEE/out/artifacts/01_HelloServlet_Web_exploded/WEB-INF/web.xml" />
-        </descriptors>
-        <webroots>
-          <root url="file://$MODULE_DIR$/Advanced API/OnlineMaterial/JavaEE/JavaEE/out/artifacts/01_HelloServlet_Web_exploded" relative="/" />
-        </webroots>
-      </configuration>
-    </facet>
-    <facet type="web" name="Web5">
-      <configuration>
-        <descriptors>
-          <deploymentDescriptor name="web.xml" url="file://$MODULE_DIR$/web/WEB-INF/web.xml" />
-        </descriptors>
-        <webroots>
-          <root url="file://$MODULE_DIR$/web" relative="/" />
-        </webroots>
-      </configuration>
-    </facet>
-    <facet type="web" name="Web4">
-      <configuration>
-        <descriptors>
-          <deploymentDescriptor name="web.xml" url="file://$MODULE_DIR$/Advanced API/OnlineMaterial/JavaEE/JavaEE/out/artifacts/01_HelloServlet_war_exploded/web/WEB-INF/web.xml" />
-        </descriptors>
-        <webroots>
-          <root url="file://$MODULE_DIR$/Advanced API/OnlineMaterial/JavaEE/JavaEE/out/artifacts/01_HelloServlet_war_exploded/web" relative="/" />
-        </webroots>
-      </configuration>
-    </facet>
-    <facet type="web" name="Web7">
-      <configuration>
-        <descriptors>
-          <deploymentDescriptor name="web.xml" url="file://$MODULE_DIR$/Advanced API/OnlineMaterial/JavaEE/JavaEE/out/artifacts/01_HelloServlet_war_exploded/WEB-INF/web.xml" />
-        </descriptors>
-        <webroots>
-          <root url="file://$MODULE_DIR$/Advanced API/OnlineMaterial/JavaEE/JavaEE/out/artifacts/01_HelloServlet_war_exploded" relative="/" />
-        </webroots>
-      </configuration>
-    </facet>
-    <facet type="web" name="Web6">
-      <configuration>
-        <descriptors>
-          <deploymentDescriptor name="web.xml" url="file://$MODULE_DIR$/Advanced API/OnlineMaterial/JavaEE/01_HelloServlet/web/web/web/WEB-INF/web.xml" />
-          <deploymentDescriptor name="web.xml" url="file://$MODULE_DIR$/Advanced API/OnlineMaterial/JavaEE/01_HelloServlet/web/web/WEB-INF/web.xml" />
-        </descriptors>
-        <webroots>
-          <root url="file://$MODULE_DIR$/Advanced API/OnlineMaterial/JavaEE/01_HelloServlet/web/web" relative="/" />
         </webroots>
       </configuration>
     </facet>
@@ -82,5 +22,6 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Advance-API-Development" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Tomcat 8.5.90" level="application_server_libraries" />
   </component>
 </module>

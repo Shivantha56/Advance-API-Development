@@ -6,15 +6,11 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebServlet(name = "MyServlet",urlPatterns = "/hello")
-public class HelloServlet extends HttpServlet {
-    //web application
-
+@WebServlet(urlPatterns = "/customer")
+public class CustomerServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        System.out.println("request ekak labuna");
         PrintWriter writer = resp.getWriter();
-        resp.setContentType("application/text");
-        writer.write("rensponse send");
+        writer.write("Hi i am customer");
     }
 }

@@ -1,0 +1,15 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="Advance-API-Development:Web exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/Advance_API_Development_Web_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="Advance-API-Development/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="Advance-API-Development" />
+          <element id="library" level="project" name="Advance-API-Development" />
+        </element>
+      </element>
+      <element id="javaee-facet-resources" facet="Advance-API-Development/web/Web6" />
+    </root>
+  </artifact>
+</component>

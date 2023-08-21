@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Advance-API-Development">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/Advanced API/OnlineMaterial/JavaEE/01_HelloServlet/src" />
+    </SOURCES>
+  </library>
+</component>

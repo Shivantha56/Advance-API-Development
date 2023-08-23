@@ -15,29 +15,13 @@ $("#button01").click(function () {
 
 });
 
-//XML object
-$("#button02").click(function () {
-    $("#table01>tr").empty();
-    $.ajax({
-        url: "http://localhost:8080/GDSE02/hello",
-        method:"POST",
-        success: function (resp) {
-
-        },
-        error: function (err) {
-            console.log(err)
-        },
-        async: true
-    });
-});
-
 //json object
 $("#button03").click(function () {
 
     $("#table02>tr").empty();
 
     $.ajax({
-        url: "db/db.json",
+        url: "customer",
         success: function (resp) {
             console.log(resp);
 

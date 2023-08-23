@@ -22,13 +22,15 @@ $("#button03").click(function () {
 
     $.ajax({
         url: "customer",
+        method:"GET",
+        dataType:"json",
         success: function (resp) {
             console.log(resp);
 
             for (const i in resp) {
-                let id = resp[i].id;
-                let name = resp[i].name;
-                let address = resp[i].address;
+                let id = resp[i].fName;
+                let name = resp[i].lName;
+                let address = resp[i].email;
 
                 $("#table02").append(" <tr>\n" +
                     `        <td>${id}</td>\n` +

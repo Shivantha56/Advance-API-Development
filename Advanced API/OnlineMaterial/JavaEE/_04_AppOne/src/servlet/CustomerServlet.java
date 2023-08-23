@@ -1,5 +1,6 @@
 package servlet;
 
+import com.mysql.cj.xdevapi.JsonArray;
 import to.CustomerTo;
 
 import javax.servlet.ServletException;
@@ -13,6 +14,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 @WebServlet(urlPatterns = "/customer")
 public class CustomerServlet extends HttpServlet {
@@ -24,11 +27,15 @@ public class CustomerServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+//        ArrayList<JsonArray>
         try {
             System.out.println("Enter");
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection connection = DriverManager.getConnection(jdbcUrl, username, password);
             ResultSet resultSet = connection.prepareStatement("SELECT * FROM customer").executeQuery();
+
+            String addJson ="";
+
             while (resultSet.next()) {
                 String customerID = resultSet.getString(1);
                 String fName = resultSet.getString(2);
@@ -44,9 +51,14 @@ public class CustomerServlet extends HttpServlet {
                 PrintWriter writer = resp.getWriter();
                 writer.write("");
 
-
+                String json = "{\"fName\":\""+fName+"\",\"lName\":\""+lName+"\",\"email\":\""+email+"\"},";
+                addJson += json;
             }
 
+            String finalJson ="["+addJson;
+            finalJson =finalJson.substring(0,finalJson.length()-1)+"]";
+            PrintWriter writer = resp.getWriter();
+            writer.write(finalJson);
 
             System.out.println("finish");
         } catch (ClassNotFoundException | SQLException e) {

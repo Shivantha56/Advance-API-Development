@@ -9,6 +9,7 @@ $("#button03").click(function () {
         dataType:"json",
         success: function (resp) {
             console.log(resp);
+            console.log(typeof(resp))
 
             for (const i in resp) {
                 let id = resp[i].fName;

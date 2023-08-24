@@ -10,10 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -64,6 +61,42 @@ public class CustomerServlet extends HttpServlet {
         } catch (ClassNotFoundException | SQLException e) {
             throw new RuntimeException(e);
         }
+
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        PrintWriter writer = resp.getWriter();
+        String name = req.getParameter("customerName");
+        String address = req.getParameter("customerAddress");
+        String email = req.getParameter("email");
+
+        System.out.println(name+" "+ address+" "+ email);
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection connection = DriverManager.getConnection(jdbcUrl, username, password);
+            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO customers (name, address, email) VALUES (?, ?, ?) ");
+
+            preparedStatement.setString(1,name);
+            preparedStatement.setString(2,address);
+            preparedStatement.setString(3,email);
+
+
+            int i = preparedStatement.executeUpdate();
+
+            if (i>0){
+
+                writer.write("customer added");
+            }else {
+                writer.write("customer cannot added");
+            }
+
+
+        } catch (ClassNotFoundException | SQLException e) {
+            throw new RuntimeException(e);
+        }
+
 
     }
 }

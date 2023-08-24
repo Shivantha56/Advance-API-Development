@@ -34,7 +34,7 @@ public class ItemServlet extends HttpServlet {
                 String name = resultSet.getString(2);
                 String price = resultSet.getString(5);
 
-                resp.setContentType("application/json");
+                resp.setContentType("application/json");  //mime type
                 PrintWriter writer = resp.getWriter();
                 writer.write("");
 

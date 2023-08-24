@@ -48,3 +48,11 @@ header>p{
     color: white;
     padding-left: 10px;
 }
+
+.main-container>form{
+    display: flex;
+}
+
+form>div{
+    margin-right: 15px;
+}

@@ -1,20 +1,3 @@
-//text file
-$("#button01").click(function () {
-
-    $.ajax({
-        url: "db/db.txt",
-        success: function (resp) {
-            console.log(resp)
-            $("#display01").text(resp);
-        },
-        error: function (err) {
-            console.log(err)
-        },
-        async: true
-    });
-
-});
-
 //json object
 $("#button03").click(function () {
 
@@ -36,6 +19,41 @@ $("#button03").click(function () {
                     `        <td>${id}</td>\n` +
                     `        <td>${name}</td>\n` +
                     `        <td>${address}</td>\n` +
+                    "    </tr>");
+
+            }
+
+
+        },
+        error: function (err) {
+            console.log(err)
+        },
+        async: true
+    });
+
+
+});
+
+$("#button04").click(function () {
+
+    $("#table02>tr").empty();
+
+    $.ajax({
+        url: "item",
+        method:"GET",
+        dataType:"json",
+        success: function (resp) {
+            console.log(resp);
+
+            for (const i in resp) {
+                let id = resp[i].id;
+                let name = resp[i].name;
+                let price = resp[i].price;
+
+                $("#table03").append(" <tr>\n" +
+                    `        <td>${id}</td>\n` +
+                    `        <td>${name}</td>\n` +
+                    `        <td>${price}</td>\n` +
                     "    </tr>");
 
             }

@@ -72,7 +72,7 @@ public class CustomerServlet extends HttpServlet {
         String email = req.getParameter("email");
 
         System.out.println(name+" "+ address+" "+ email);
-
+        String addJson ="";
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection connection = DriverManager.getConnection(jdbcUrl, username, password);
@@ -87,9 +87,59 @@ public class CustomerServlet extends HttpServlet {
 
             if (i>0){
 
-                writer.write("customer added");
+                String json = "{\"name\":\""+name+"\",\"address\":\""+address+"\",\"email\":\""+email+"\"},";
+                addJson += json;
+                writer.println("customer added");
+                String finalJson ="["+addJson;
+                finalJson =finalJson.substring(0,finalJson.length()-1)+"]";
+                writer.println(finalJson);
             }else {
                 writer.write("customer cannot added");
+            }
+
+
+        } catch (ClassNotFoundException | SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+
+    }
+
+    @Override
+    protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        PrintWriter writer = resp.getWriter();
+        String name = req.getParameter("cusName");
+//        String address = req.getParameter("customerAddress");
+//        String email = req.getParameter("email");
+
+        System.out.println(name);
+//        System.out.println(name+" "+ address+" "+ email);
+        String addJson ="";
+        try {
+            Class.forName( "com.mysql.cj.jdbc.Driver");
+            Connection connection = DriverManager.getConnection(jdbcUrl, username, password);
+            PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM customers WHERE name = ?");
+
+            preparedStatement.setString(1,name);
+//            preparedStatement.setString(2,address);
+//            preparedStatement.setString(3,email);
+
+
+            int i = preparedStatement.executeUpdate();
+
+            if (i>0){
+
+                writer.write("deleted");
+//                String json = "{\"name\":\""+name+"\",\"address\":\""+address+"\",\"email\":\""+email+"\"},";
+//                addJson += json;
+//                writer.println("customer added");
+//                String finalJson ="["+addJson;
+//                finalJson =finalJson.substring(0,finalJson.length()-1)+"]";
+//                writer.println(finalJson);
+                System.out.println("deleted");
+            }else {
+                writer.write("customer cannot delete");
+                System.out.println("Can not deleted");
             }
 
 

@@ -73,5 +73,74 @@ $("#button04").click(function () {
 
 
 
+$('#btn04').click(function () {
+    // let name = $("#name").val();
+    // let address = $('#address').val();
+    // let email = $('#email').val();
+    let data = $("#customerForm").serialize();
+    console.log(data);
+   // let json = "{\"name\":name,"address":address,email:email}"
+
+    $.ajax({
+        url:"customer",
+        method:"POST",
+        data:data,
+        dataType:"json",
+        success:function (resp) {
+            console.log(resp);
+            for (const i in resp) {
+                let id = resp[i].name;
+                let name = resp[i].address;
+                let price = resp[i].email;
+
+                $("#table03").append(" <tr>\n" +
+                    `        <td>${id}</td>\n` +
+                    `        <td>${name}</td>\n` +
+                    `        <td>${price}</td>\n` +
+                    "    </tr>");
+
+            }
+        }
+    });
+
+
+});
+
+
+$('#btn05').click(function () {
+    let name = $("#name").val();
+    // let address = $('#address').val();
+    // let email = $('#email').val();
+    // let data = $("#customerForm").serialize();
+    // console.log(data);
+    // let json = "{\"name\":name,"address":address,email:email}"
+
+    $.ajax({
+        url:"customer?cusName="+name,
+        method:"DELETE",
+        // data:data,
+        dataType:"json",
+        success:function (resp) {
+            // console.log(resp);
+            // for (const i in resp) {
+            //     let id = resp[i].name;
+            //     let name = resp[i].address;
+            //     let price = resp[i].email;
+            //
+            //     $("#table03").append(" <tr>\n" +
+            //         `        <td>${id}</td>\n` +
+            //         `        <td>${name}</td>\n` +
+            //         `        <td>${price}</td>\n` +
+            //         "    </tr>");
+            //
+            // }
+        }
+    });
+
+
+});
+
+
+
 
 

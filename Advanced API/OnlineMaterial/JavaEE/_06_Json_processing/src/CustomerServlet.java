@@ -16,12 +16,17 @@ public class CustomerServlet extends HttpServlet {
         JsonObjectBuilder objectBuilder = Json.createObjectBuilder();
         objectBuilder.add("name","Dilshaan");
         objectBuilder.add("age","24");
-        JsonObject build = objectBuilder.build();
+//        JsonObject build = objectBuilder.build();
         resp.setContentType("application/json");
 
 
         PrintWriter writer = resp.getWriter();
-        writer.print(build);
+//        writer.print(build);
+
+        JsonArrayBuilder arrayBuilder = Json.createArrayBuilder();
+        JsonArrayBuilder add = arrayBuilder.add(objectBuilder);
+        writer.print(add.build());
+
     }
 
     @Override

@@ -7,10 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 
 @WebServlet(urlPatterns = "/customerss")
 public class CustomerServlet extends HttpServlet {
@@ -61,5 +58,67 @@ public class CustomerServlet extends HttpServlet {
         } catch (ClassNotFoundException | SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        String createJson = "";
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection connection = DriverManager.getConnection(jdbcUrl, username, password);
+            PreparedStatement stm = connection.prepareStatement("select * from customer");
+            ResultSet resultSet = stm.executeQuery();
+
+
+            while (resultSet.next()){
+                String id = resultSet.getString(1);
+                String name = resultSet.getString(2);
+                String address = resultSet.getString(3);
+                String salary = resultSet.getString(4);
+
+
+                String finalJson = "{\"customerId\":\""+id+"\",\"customerName\":\""+name+"\",\"customerAddress\":\""+address+"\",\"customerSalary\":\""+salary+"\"},";
+                createJson += finalJson;
+                System.out.println("result set"+id+name+address+salary);
+            }
+
+            String finalJson = "["+createJson.substring(0,createJson.length()-1)+"]";
+            PrintWriter writer = resp.getWriter();
+            writer.write(finalJson);
+
+
+        } catch (ClassNotFoundException | SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
+    @Override
+    protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        String getCustomerId = req.getParameter("customerId");
+        System.out.println(getCustomerId);
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection connection = DriverManager.getConnection(jdbcUrl, username, password);
+            int delete = connection.createStatement().executeUpdate("DELETE FROM customer WHERE customer_id =\"" +getCustomerId+"\"");
+//            int delete = connection.prepareStatement("DELETE FROM customer WHERE customer_id ="+getCustomerId).executeUpdate();
+
+            if (delete>0){
+                System.out.println("customer delete");
+            }else {
+                System.out.println("Some thing happen");
+            }
+
+
+
+
+        } catch (ClassNotFoundException | SQLException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 }

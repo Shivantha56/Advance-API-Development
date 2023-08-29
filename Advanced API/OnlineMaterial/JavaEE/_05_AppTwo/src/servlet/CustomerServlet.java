@@ -121,4 +121,46 @@ public class CustomerServlet extends HttpServlet {
         }
 
     }
+
+    @Override
+    protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        String getCustomerId = req.getParameter("customerId");
+        String customerName = req.getParameter("customerName");
+        String customerAddress = req.getParameter("customerAddress");
+        double customerSalary = Double.parseDouble(req.getParameter("customerSalary"));
+        System.out.println(getCustomerId+ " " + customerName+" "+customerAddress+" "+customerSalary);
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection connection = DriverManager.getConnection(jdbcUrl, username, password);
+            PreparedStatement stm = connection.prepareStatement("UPDATE customer SET customer_name = ?, customer_address = ?, customer_salary =? WHERE customer_id="+"\"" +getCustomerId+"\"");
+
+            stm.setString(1,customerName);
+            stm.setString(2,customerAddress);
+            stm.setDouble(3,customerSalary);
+
+            int i = stm.executeUpdate();
+
+
+
+            if (i>0){
+//
+                String finalJson = "{\"customerId\":\""+getCustomerId+"\",\"customerName\":\""+customerName+"\",\"customerAddress\":\""+customerAddress+"\",\"customerSalary\":\""+customerSalary+"\"}";
+
+                PrintWriter writer = resp.getWriter();
+                writer.write(finalJson);
+                System.out.println("customer updated");
+            }else {
+                System.out.println("cannot updated");
+            }
+
+
+
+        } catch (ClassNotFoundException | SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+
+    }
 }

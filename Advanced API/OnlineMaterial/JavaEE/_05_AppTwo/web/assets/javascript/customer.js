@@ -106,3 +106,27 @@ function loadTable() {
 
 
     });
+
+
+// update customer
+$('#updateCustomer').click(function (e) {
+    e.preventDefault();
+
+    let customerId = $('#customerId').val();
+    let customerName = $('#customerName').val();
+    let customerAddress = $('#customerAddress').val();
+    let customerSalary = $('#customerSalary').val();
+
+    let query = "customerId="+customerId+"&customerName="+customerName+"&customerAddress="+customerAddress+"&customerSalary="+customerSalary;
+    console.log(query)
+
+    $.ajax({
+        url: "customerss?"+query,
+        method: "PUT",
+        success: function (resp) {
+            console.log(resp);
+            loadTable();
+        }
+    });
+
+});

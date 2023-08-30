@@ -1,5 +1,4 @@
-package servlet;
-
+import javax.json.*;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -36,11 +35,13 @@ public class JsonProcessing extends HttpServlet {
             stm.setString(2,customerName);
             stm.setString(3,customerAddress);
             stm.setDouble(4,customerSalary);
-            
-            
-            
-            String finalJson = "{\"customerId\":\""+customerId+"\",\"customerName\":\""+customerName+"\",\"customerAddress\":\""+customerAddress+"\",\"customerSalary\":\""+customerSalary+"\"}";
-            System.out.println(finalJson);
+
+            JsonObjectBuilder objectBuilder = Json.createObjectBuilder();
+            objectBuilder.add("customerId",customerId);
+            objectBuilder.add("customerName",customerName);
+            objectBuilder.add("customerAddress",customerAddress);
+            objectBuilder.add("customerSalary",customerSalary);
+            JsonObject jsonObject = objectBuilder.build();
 
 
             boolean save = stm.executeUpdate() > 0;
@@ -49,12 +50,14 @@ public class JsonProcessing extends HttpServlet {
             if (save){
                 resp.setContentType("application/json");
                 PrintWriter writer = resp.getWriter();
-                writer.write(finalJson);
+                writer.print(jsonObject);
+                System.out.println(jsonObject);
                 System.out.println("customer saved");
             }else{
                 PrintWriter writer = resp.getWriter();
                 writer.write("Can not save customer");
                 System.out.println("can not save customer");
+
             }
 
         } catch (ClassNotFoundException | SQLException e) {
@@ -65,7 +68,8 @@ public class JsonProcessing extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        String createJson = "";
+        JsonArrayBuilder arrayBuilder = Json.createArrayBuilder();
+        JsonObjectBuilder objectBuilder = Json.createObjectBuilder();
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -74,25 +78,92 @@ public class JsonProcessing extends HttpServlet {
             ResultSet resultSet = stm.executeQuery();
 
 
-            while (resultSet.next()){
-                String id = resultSet.getString(1);
-                String name = resultSet.getString(2);
-                String address = resultSet.getString(3);
-                String salary = resultSet.getString(4);
+
+            if (resultSet.next()){
+
+                String ids = resultSet.getString(1);
+                String names = resultSet.getString(2);
+                String addresss = resultSet.getString(3);
+                String salarys= resultSet.getString(4);
+
+                objectBuilder.add("status","200");
+                objectBuilder.add("data","");
+                objectBuilder.add("message","Customers fetch success");
+                arrayBuilder.add(objectBuilder.build());
+
+                //creating json array using json api
+                objectBuilder.add("customerId",ids);
+                objectBuilder.add("customerName",names);
+                objectBuilder.add("customerAddress",addresss);
+                objectBuilder.add("customerSalary",salarys);
 
 
-                String finalJson = "{\"customerId\":\""+id+"\",\"customerName\":\""+name+"\",\"customerAddress\":\""+address+"\",\"customerSalary\":\""+salary+"\"},";
-                createJson += finalJson;
-                System.out.println("result set"+id+name+address+salary);
+
+                resp.setStatus(200);
+
+                arrayBuilder.add(objectBuilder.build());
+
+                while (resultSet.next()){
+                    String id = resultSet.getString(1);
+                    String name = resultSet.getString(2);
+                    String address = resultSet.getString(3);
+                    String salary = resultSet.getString(4);
+
+                    //creating json array using json api
+                    objectBuilder.add("customerId",id);
+                    objectBuilder.add("customerName",name);
+                    objectBuilder.add("customerAddress",address);
+                    objectBuilder.add("customerSalary",salary);
+                    arrayBuilder.add(objectBuilder.build());
+                }
+
+                resp.setContentType("application/json");
+                PrintWriter writer = resp.getWriter();
+                writer.print(arrayBuilder.build());
+            }else {
+                resp.setStatus(200);
+                objectBuilder.add("status","400");
+                objectBuilder.add("data","No customers found");
+                objectBuilder.add("message","error");
+                arrayBuilder.add(objectBuilder.build());
+
+                resp.setContentType("application/json");
+                PrintWriter writer = resp.getWriter();
+                writer.print(arrayBuilder.build());
             }
 
-            String finalJson = "["+createJson.substring(0,createJson.length()-1)+"]";
-            PrintWriter writer = resp.getWriter();
-            writer.write(finalJson);
+//            while (resultSet.next()){
+//                String id = resultSet.getString(1);
+//                String name = resultSet.getString(2);
+//                String address = resultSet.getString(3);
+//                String salary = resultSet.getString(4);
+//
+//                //creating json array using json api
+//                objectBuilder.add("customerId",id);
+//                objectBuilder.add("customerName",name);
+//                objectBuilder.add("customerAddress",address);
+//                objectBuilder.add("customerSalary",salary);
+//                arrayBuilder.add(objectBuilder.build());
+//            }
+
+//            resp.setStatus(200);
+//            objectBuilder.add("status","200");
+//            objectBuilder.add("data","");
+//            objectBuilder.add("message","Customers fetch success");
+//            arrayBuilder.add(objectBuilder.build());
 
 
-        } catch (ClassNotFoundException | SQLException e) {
-            throw new RuntimeException(e);
+//            resp.setContentType("application/json");
+//            PrintWriter writer = resp.getWriter();
+//            writer.print(arrayBuilder.build());
+
+
+
+        } catch (ClassNotFoundException e) {
+            resp.setStatus(200);
+        }catch (SQLException e){
+            resp.setStatus(200);
+            System.out.println("a");
         }
 
     }
@@ -107,7 +178,6 @@ public class JsonProcessing extends HttpServlet {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection connection = DriverManager.getConnection(jdbcUrl, username, password);
             int delete = connection.createStatement().executeUpdate("DELETE FROM customer WHERE customer_id =\"" +getCustomerId+"\"");
-//            int delete = connection.prepareStatement("DELETE FROM customer WHERE customer_id ="+getCustomerId).executeUpdate();
 
             if (delete>0){
                 System.out.println("customer delete");
@@ -147,11 +217,9 @@ public class JsonProcessing extends HttpServlet {
 
 
             if (i>0){
-//
-                String finalJson = "{\"customerId\":\""+getCustomerId+"\",\"customerName\":\""+customerName+"\",\"customerAddress\":\""+customerAddress+"\",\"customerSalary\":\""+customerSalary+"\"}";
 
                 PrintWriter writer = resp.getWriter();
-                writer.write(finalJson);
+                writer.write("customer updated");
                 System.out.println("customer updated");
             }else {
                 System.out.println("cannot updated");

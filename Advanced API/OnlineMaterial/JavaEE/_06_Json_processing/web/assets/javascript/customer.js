@@ -1,7 +1,32 @@
+$('#customerTable>tbody>.table-row').click(function () {
+
+    console.log("table row triggered")
+
+    // $('#customerForm>input').empty();
+
+
+    let id = $('#customerTable>tbody>tr:nth-child(1)>:nth-child(1)').text();
+    let name = $('#customerTable>tbody>tr:nth-child(1)>td:nth-child(2)').text();
+    let address = $('#customerTable>tbody>tr>td:nth-child(3)').text();
+    let salary = $('#customerTable>tbody>tr>td:nth-child(4)').text();
+
+    console.log(id+" "+name+" "+address+" "+salary);
+
+    $('#customerId').val(id);
+    $('#customerName').val(name);
+    $('#customerAddress').val(address);
+    $('#customerSalary').val(salary);
+
+
+
+})
+
+
+
+
 function loadTable() {
 
     $(".table-row").empty();
-
     $.ajax({
         url: "customerss",
         method: "GET",
@@ -10,17 +35,31 @@ function loadTable() {
         success: function (resp) {
 
 
-            console.log(resp);
+            // console.log(resp);
+            // $(".table-row").empty();
 
-            for (const i in resp) {
-                let customerId = resp[i].customerId;
-                let customerName = resp[i].customerName;
-                let customerAddress = resp[i].customerAddress;
-                let customerSalary = resp[i].customerSalary;
 
-                $('#customerTable>tbody').append(`<tr class="table-row"><td>${customerId}</td><td>${customerName}</td>
+            for (let i in resp) {
+
+                if (i == 0) {
+
+                    let statusCode = resp[0].status;
+                    let data = resp[0].data;
+                    let message = resp[0].message;
+
+                    console.log(statusCode+" "+data+" "+message);
+
+                } else {
+
+                    let customerId = resp[i].customerId;
+                    let customerName = resp[i].customerName;
+                    let customerAddress = resp[i].customerAddress;
+                    let customerSalary = resp[i].customerSalary;
+
+                    $('#customerTable>tbody').append(`<tr class="table-row"><td>${customerId}</td><td>${customerName}</td>
                                                 <td>${customerAddress}</td><td>${customerSalary}</td></tr>`);
 
+                }
             }
 
         }

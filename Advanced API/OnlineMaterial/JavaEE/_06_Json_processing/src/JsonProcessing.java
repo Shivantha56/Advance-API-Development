@@ -20,6 +20,7 @@ public class JsonProcessing extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+        JsonObjectBuilder objectBuilder = Json.createObjectBuilder();
 
         try {
             String customerId = req.getParameter("customerId");
@@ -36,7 +37,6 @@ public class JsonProcessing extends HttpServlet {
             stm.setString(3,customerAddress);
             stm.setDouble(4,customerSalary);
 
-            JsonObjectBuilder objectBuilder = Json.createObjectBuilder();
             objectBuilder.add("customerId",customerId);
             objectBuilder.add("customerName",customerName);
             objectBuilder.add("customerAddress",customerAddress);
@@ -61,7 +61,14 @@ public class JsonProcessing extends HttpServlet {
             }
 
         } catch (ClassNotFoundException | SQLException e) {
-            throw new RuntimeException(e);
+            resp.setContentType("application/json");
+
+            resp.setStatus(200);
+            objectBuilder.add("status","500");
+            objectBuilder.add("data","error");
+            objectBuilder.add("message",e.getMessage());
+            PrintWriter writer = resp.getWriter();
+            writer.print(objectBuilder.build());
         }
     }
 
@@ -132,44 +139,24 @@ public class JsonProcessing extends HttpServlet {
                 writer.print(arrayBuilder.build());
             }
 
-//            while (resultSet.next()){
-//                String id = resultSet.getString(1);
-//                String name = resultSet.getString(2);
-//                String address = resultSet.getString(3);
-//                String salary = resultSet.getString(4);
-//
-//                //creating json array using json api
-//                objectBuilder.add("customerId",id);
-//                objectBuilder.add("customerName",name);
-//                objectBuilder.add("customerAddress",address);
-//                objectBuilder.add("customerSalary",salary);
-//                arrayBuilder.add(objectBuilder.build());
-//            }
 
-//            resp.setStatus(200);
-//            objectBuilder.add("status","200");
-//            objectBuilder.add("data","");
-//            objectBuilder.add("message","Customers fetch success");
-//            arrayBuilder.add(objectBuilder.build());
+        } catch (ClassNotFoundException | SQLException e) {
+            resp.setContentType("application/json");
 
-
-//            resp.setContentType("application/json");
-//            PrintWriter writer = resp.getWriter();
-//            writer.print(arrayBuilder.build());
-
-
-
-        } catch (ClassNotFoundException e) {
             resp.setStatus(200);
-        }catch (SQLException e){
-            resp.setStatus(200);
-            System.out.println("a");
+            objectBuilder.add("status","500");
+            objectBuilder.add("data","error");
+            objectBuilder.add("message",e.getMessage());
+            PrintWriter writer = resp.getWriter();
+            writer.print(objectBuilder.build());
+
         }
 
     }
 
     @Override
     protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        JsonObjectBuilder objectBuilder = Json.createObjectBuilder();
 
         String getCustomerId = req.getParameter("customerId");
         System.out.println(getCustomerId);
@@ -189,13 +176,22 @@ public class JsonProcessing extends HttpServlet {
 
 
         } catch (ClassNotFoundException | SQLException e) {
-            throw new RuntimeException(e);
+            resp.setContentType("application/json");
+
+            resp.setStatus(200);
+            objectBuilder.add("status","500");
+            objectBuilder.add("data","error");
+            objectBuilder.add("message",e.getMessage());
+            PrintWriter writer = resp.getWriter();
+            writer.print(objectBuilder.build());
         }
 
     }
 
     @Override
     protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        JsonObjectBuilder objectBuilder = Json.createObjectBuilder();
+        JsonArrayBuilder arrayBuilder = Json.createArrayBuilder();
 
         String getCustomerId = req.getParameter("customerId");
         String customerName = req.getParameter("customerName");
@@ -218,8 +214,14 @@ public class JsonProcessing extends HttpServlet {
 
             if (i>0){
 
+                resp.setStatus(200);
+                objectBuilder.add("status","200");
+                objectBuilder.add("data","customerUpdate success");
+                objectBuilder.add("message","error");
+                arrayBuilder.add(objectBuilder.build());
+
                 PrintWriter writer = resp.getWriter();
-                writer.write("customer updated");
+                writer.print(arrayBuilder.build());
                 System.out.println("customer updated");
             }else {
                 System.out.println("cannot updated");
@@ -228,7 +230,14 @@ public class JsonProcessing extends HttpServlet {
 
 
         } catch (ClassNotFoundException | SQLException e) {
-            throw new RuntimeException(e);
+            resp.setContentType("application/json");
+
+            resp.setStatus(200);
+            objectBuilder.add("status","500");
+            objectBuilder.add("data","error");
+            objectBuilder.add("message",e.getMessage());
+            PrintWriter writer = resp.getWriter();
+            writer.print(objectBuilder.build());
         }
 
 

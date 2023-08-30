@@ -2,13 +2,13 @@ $('#customerTable>tbody>.table-row').click(function () {
 
     console.log("table row triggered")
 
-    // $('#customerForm>input').empty();
+    $('#customerForm>input').empty();
 
 
     let id = $('#customerTable>tbody>tr:nth-child(1)>:nth-child(1)').text();
     let name = $('#customerTable>tbody>tr:nth-child(1)>td:nth-child(2)').text();
-    let address = $('#customerTable>tbody>tr>td:nth-child(3)').text();
-    let salary = $('#customerTable>tbody>tr>td:nth-child(4)').text();
+    let address = $('#customerTable>tbody>tr:nth-child(1)>td:nth-child(3)').text();
+    let salary = $('#customerTable>tbody>tr:nth-child(1)>td:nth-child(4)').text();
 
     console.log(id+" "+name+" "+address+" "+salary);
 
@@ -180,11 +180,18 @@ $('#updateCustomer').click(function (e) {
     let customerSalary = $('#customerSalary').val();
 
     let query = "customerId=" + customerId + "&customerName=" + customerName + "&customerAddress=" + customerAddress + "&customerSalary=" + customerSalary;
+
+
+    let json = JSON.stringify({"customerID":customerId,"customerName":customerName,"customerAddress":customerAddress,"customerSalary":customerSalary});
+    console.log(json);
+
     console.log(query)
 
     $.ajax({
-        url: "customerss?" + query,
+        url: "customerss",
         method: "PUT",
+        contentType:"application/json",
+        data:json,
         success: function (resp) {
             console.log(resp);
             loadTable();

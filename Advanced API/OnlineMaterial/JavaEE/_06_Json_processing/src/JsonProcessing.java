@@ -1,5 +1,7 @@
 import javax.json.*;
+import javax.json.stream.JsonParser;
 import javax.servlet.ServletException;
+import javax.servlet.ServletInputStream;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -193,11 +195,13 @@ public class JsonProcessing extends HttpServlet {
         JsonObjectBuilder objectBuilder = Json.createObjectBuilder();
         JsonArrayBuilder arrayBuilder = Json.createArrayBuilder();
 
-        String getCustomerId = req.getParameter("customerId");
-        String customerName = req.getParameter("customerName");
-        String customerAddress = req.getParameter("customerAddress");
-        double customerSalary = Double.parseDouble(req.getParameter("customerSalary"));
-        System.out.println(getCustomerId+ " " + customerName+" "+customerAddress+" "+customerSalary);
+        JsonReader reader = Json.createReader(req.getReader());
+        JsonObject jsonObject = reader.readObject();
+        String getCustomerId = jsonObject.getString("customerId");
+        String customerName = jsonObject.getString("customerName");
+        String customerAddress = jsonObject.getString("customerAddress");
+        String salary = jsonObject.getString("customerSalary");
+        double customerSalary = Double.parseDouble(salary);
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");

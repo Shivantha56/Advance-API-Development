@@ -5,7 +5,6 @@
       <element id="javaee-facet-resources" facet="_06_Json_processing/web/Web" />
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
-          <element id="module-output" name="_06_Json_processing" />
           <element id="module-source" name="_06_Json_processing" />
         </element>
         <element id="directory" name="lib">

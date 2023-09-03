@@ -33,6 +33,7 @@ public class ItemServlet extends HttpServlet {
                 String salary = resultSet.getString(4);
                 System.out.println(id);
             }
+            connection.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

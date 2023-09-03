@@ -1,3 +1,5 @@
+package servlet;
+
 import org.apache.commons.dbcp2.BasicDataSource;
 
 import javax.servlet.ServletContext;
@@ -16,18 +18,21 @@ public class CustomerServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 
-        BasicDataSource basicDataSource = new BasicDataSource();
-        basicDataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-        basicDataSource.setUrl("jdbc:mysql://localhost:3306/apptwo");
-        basicDataSource.setUsername("root");
-        basicDataSource.setPassword("1234");
-        basicDataSource.setMaxTotal(5);//how many connections
-        basicDataSource.setInitialSize(5);// how many connection we should initialized
+//        BasicDataSource basicDataSource = new BasicDataSource();
+//        basicDataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
+//        basicDataSource.setUrl("jdbc:mysql://localhost:3306/apptwo");
+//        basicDataSource.setUsername("root");
+//        basicDataSource.setPassword("1234");
+//        basicDataSource.setMaxTotal(5);//how many connections
+//        basicDataSource.setInitialSize(5);// how many connection we should initialized
 
-        ServletContext servletContext = req.getServletContext();
-        servletContext.setAttribute("bds",basicDataSource);
+//        ServletContext servletContext = req.getServletContext();
+//        servletContext.setAttribute("bds",basicDataSource);
 
         System.out.println("aaa");
+
+        ServletContext servletContext = req.getServletContext();
+        BasicDataSource basicDataSource = (BasicDataSource) servletContext.getAttribute("bds");
 
         try {
             Connection connection = basicDataSource.getConnection();

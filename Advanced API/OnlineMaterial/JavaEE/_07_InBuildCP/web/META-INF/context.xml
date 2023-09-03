@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context path="/">
+    <Resource
+            name="jdbc/pool"
+            type="javax.sql.DataSource"
+            driverClassName = "jdbc:mysql://localhost:3306/apptwo"
+            username = "root"
+            password = "1234"
+            maxRotal ="5"
+            initialeSize ="5">
+
+    </Resource>
+
+
+</Context>

@@ -15,7 +15,7 @@ import java.sql.SQLException;
 public class CustomerServlet extends HttpServlet {
 
 
-    @Resource(name= "java:comp/env/jdbc.pool")
+    @Resource(name = "java:comp/env/jdbc/pool")
     DataSource dataSource;
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

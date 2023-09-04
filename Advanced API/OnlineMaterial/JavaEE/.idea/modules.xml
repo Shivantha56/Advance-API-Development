@@ -11,6 +11,7 @@
       <module fileurl="file://$PROJECT_DIR$/_06_Json_processing/_06_Json_processing.iml" filepath="$PROJECT_DIR$/_06_Json_processing/_06_Json_processing.iml" />
       <module fileurl="file://$PROJECT_DIR$/_07_InBuildCP/_07_InBuildCP.iml" filepath="$PROJECT_DIR$/_07_InBuildCP/_07_InBuildCP.iml" />
       <module fileurl="file://$PROJECT_DIR$/_08_DBCP/_08_DBCP.iml" filepath="$PROJECT_DIR$/_08_DBCP/_08_DBCP.iml" />
+      <module fileurl="file://$PROJECT_DIR$/_07_InBuildCP/_09_Filter/_09_Filter.iml" filepath="$PROJECT_DIR$/_07_InBuildCP/_09_Filter/_09_Filter.iml" />
       <module fileurl="file://$PROJECT_DIR$/_10_frontEnd/_10_frontEnd.iml" filepath="$PROJECT_DIR$/_10_frontEnd/_10_frontEnd.iml" />
     </modules>
   </component>

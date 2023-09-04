@@ -17,12 +17,7 @@ $('#customerTable>tbody>.table-row').click(function () {
     $('#customerAddress').val(address);
     $('#customerSalary').val(salary);
 
-
-
 })
-
-
-
 
 function loadTable() {
 
@@ -111,7 +106,7 @@ $('#getAllCustomer').click(function (e) {
     console.log(serialize);
 
     $.ajax({
-        url: "customerss",
+        url: "http://localhost:8080/filters/customerApp",
         method: "GET",
         data: serialize,
         dataType: "json",

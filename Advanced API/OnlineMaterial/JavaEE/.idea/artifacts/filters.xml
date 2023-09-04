@@ -1,0 +1,19 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="filters">
+    <output-path>$PROJECT_DIR$/out/artifacts/filters</output-path>
+    <root id="archive" name="filters.war">
+      <element id="javaee-facet-resources" facet="_09_Filter/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="_09_Filter" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="javax.json-api-1.1.4" />
+          <element id="library" level="project" name="javax.json-1.1.4" />
+          <element id="library" level="project" name="mysql-connector-java-8.0.30" />
+          <element id="library" level="project" name="commons-dbcp2-2.9.0" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>

@@ -15,7 +15,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-@WebServlet(urlPatterns = "/customerApp")
+@WebServlet(urlPatterns = "/customer")
 public class JsonProcessing extends HttpServlet {
 
     @Resource(name = "java:comp/env/jdbc/pool") //adding resources in runtime

@@ -6,6 +6,8 @@
       <list>
         <option value="$PROJECT_DIR$/03_Core/Core/pom.xml" />
         <option value="$PROJECT_DIR$/03_Core/01_Core/pom.xml" />
+        <option value="$PROJECT_DIR$/02_Bean_LifeCycyle/BeanLifCycle/pom.xml" />
+        <option value="$PROJECT_DIR$/02_Bean_LifeCycyle/02_Bean_LifeCycle/pom.xml" />
       </list>
     </option>
   </component>

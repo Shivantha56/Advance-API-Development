@@ -3,10 +3,10 @@ package bean;
 import org.springframework.stereotype.Component;
 
 @Component
-public class SpringBean {
+public class SpringBeanOne {
 
-    public SpringBean (){
-        System.out.println("This is the spring bean");
+    public SpringBeanOne(){
+        System.out.println("Spring bean 01");
     }
 
     public void getMyBean(){

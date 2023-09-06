@@ -10,13 +10,15 @@ public class AppInitializer {
 
         AnnotationConfigApplicationContext anc = new AnnotationConfigApplicationContext();
 
-        Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
-            @Override
-            public void run() {
-                System.out.println("JVM is about ot end");
-                anc.close();
-            }
-        }));
+//        Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+//                System.out.println("JVM is about ot end");
+//                anc.close();
+//            }
+//        }));
+
+        anc.registerShutdownHook();
 
         anc.register(AppConfig.class);
         anc.refresh();

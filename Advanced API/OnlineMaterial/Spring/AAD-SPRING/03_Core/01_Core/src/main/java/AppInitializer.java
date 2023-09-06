@@ -23,13 +23,19 @@ public class AppInitializer {
         anc.register(AppConfig.class);
         anc.refresh();
 
-        SpringBeanOne springBean01 = anc.getBean(SpringBeanOne.class);
-        SpringBeanTwo springBean02 = anc.getBean(SpringBeanTwo.class);
+//        SpringBeanOne springBean01 = anc.getBean(SpringBeanOne.class);
+//        SpringBeanTwo springBean02 = anc.getBean(SpringBeanTwo.class);
+//        System.out.println(springBean01);
+//        System.out.println(springBean02);
+//
+//        SpringBeanThree springBean03 = anc.getBean(SpringBeanThree.class);
+//        System.out.println(springBean03);
+        Object springBean01 = anc.getBean("springBeanOne"); //get bean from bean id
         System.out.println(springBean01);
+        Object springBean02 = anc.getBean("BeanTwo"); //Bean two is not a default id, it is custom generated id
         System.out.println(springBean02);
 
-        SpringBeanThree springBean03 = anc.getBean(SpringBeanThree.class);
-        System.out.println(springBean03);
+
     }
 
 

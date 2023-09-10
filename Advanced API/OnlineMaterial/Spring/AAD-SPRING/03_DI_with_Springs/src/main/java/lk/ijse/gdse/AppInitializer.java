@@ -2,6 +2,7 @@ package lk.ijse.gdse;
 
 import lk.ijse.gdse.bean.Boy;
 import lk.ijse.gdse.config.Configuration;
+import lk.ijse.gdse.di.Kamal;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.core.annotation.AnnotationConfigurationException;
 
@@ -11,8 +12,8 @@ public class AppInitializer {
         context.registerShutdownHook();
         context.register(Configuration.class);
         context.refresh();
-        Boy bean = context.getBean(Boy.class);
+        Kamal bean = context.getBean(Kamal.class);
         System.out.println(bean);
-        bean.getChatting();
+        bean.chatWithKamali();
     }
 }

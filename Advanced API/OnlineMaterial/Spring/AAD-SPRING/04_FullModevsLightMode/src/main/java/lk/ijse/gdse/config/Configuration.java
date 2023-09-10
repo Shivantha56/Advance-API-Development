@@ -1,6 +1,7 @@
 package lk.ijse.gdse.config;
 
 import lk.ijse.gdse.bean.SpringBeanOne;
+import lk.ijse.gdse.bean.SpringBeanThree;
 import lk.ijse.gdse.bean.SpringBeanTwo;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -10,9 +11,12 @@ import org.springframework.stereotype.Component;
 @ComponentScan(basePackages = "lk.ijse.gdse.bean")
 public class Configuration {
 
-    @Bean
+
+//    @Bean
     public SpringBeanOne getSpringBeanOne(){
-//        Inter bean dependencies
+//        Inter bean dependencies innovcation
+        // what is the inter bean innvocation
+        // why we need to use it
         SpringBeanTwo bean01 = getSpringBeanTwo();
         SpringBeanTwo bean02 = getSpringBeanTwo();
         System.out.println(bean01);
@@ -22,6 +26,13 @@ public class Configuration {
     @Bean
     public SpringBeanTwo getSpringBeanTwo(){
         return new SpringBeanTwo();
+    }
+
+    @Bean
+    public SpringBeanThree getSpringBeanThree(SpringBeanTwo springBeanTwo){
+        System.out.println(springBeanTwo);
+        System.out.println(springBeanTwo);
+        return new SpringBeanThree();
     }
 
 

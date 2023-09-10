@@ -14,6 +14,11 @@ public class Kamal {
         System.out.println("kamal is initiated");
     }
 
+    @Autowired
+    public void setkaamali (SuperKamali kamali){
+        this.kamali = kamali;
+    }
+
     public void chatWithKamali(){
 
        kamali.chat();

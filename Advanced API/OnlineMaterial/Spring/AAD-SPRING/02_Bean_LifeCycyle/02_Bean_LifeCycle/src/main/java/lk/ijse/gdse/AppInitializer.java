@@ -13,8 +13,13 @@ public class AppInitializer {
         ctx.register(AppConfig.class);
         ctx.refresh();
 
-//        MyConnection bean = ctx.getBean(MyConnection.class);
-//        System.out.println(bean);
+        MyConnection bean = ctx.getBean(MyConnection.class);
+        System.out.println(bean);
+        try {
+            bean.destroy();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
 
 //        ctx.destroy();
     }

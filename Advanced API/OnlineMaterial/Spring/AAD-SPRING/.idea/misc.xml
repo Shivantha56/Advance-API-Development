@@ -8,7 +8,17 @@
         <option value="$PROJECT_DIR$/03_Core/01_Core/pom.xml" />
         <option value="$PROJECT_DIR$/02_Bean_LifeCycyle/BeanLifCycle/pom.xml" />
         <option value="$PROJECT_DIR$/02_Bean_LifeCycyle/02_Bean_LifeCycle/pom.xml" />
+        <option value="$PROJECT_DIR$/d0/pom.xml" />
+        <option value="$PROJECT_DIR$/03/pom.xml" />
+        <option value="$PROJECT_DIR$/disds/pom.xml" />
+        <option value="$PROJECT_DIR$/03_DI_with_Spring/pom.xml" />
+        <option value="$PROJECT_DIR$/03_DI_with_Springs/pom.xml" />
       </list>
+    </option>
+    <option name="ignoredFiles">
+      <set>
+        <option value="$PROJECT_DIR$/03_DI_with_Spring/pom.xml" />
+      </set>
     </option>
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">

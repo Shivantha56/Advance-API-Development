@@ -30,7 +30,9 @@ public class DbConnection implements InitializingBean {
     public void afterPropertiesSet() throws Exception {
         System.out.println(environment);
         System.out.println(environment.getProperty("user.db.url"));
-        System.out.println(environment.getProperty("user.db.l"));
+        System.out.println(environment.getProperty("user.db.l"));//null not error
+        System.out.println(environment.getProperty("user.db.password"));// null not error
 
+        System.out.println(environment.getRequiredProperty("user.db.driverClassNam"));// if key has not found exception is pop up
     }
 }

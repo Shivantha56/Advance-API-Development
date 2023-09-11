@@ -14,6 +14,7 @@ public class SpringBean01 implements InitializingBean {
     private String projectName;
 
     public SpringBean01() {
+
         System.out.println("This is the spring bean one initiated");
     }
 

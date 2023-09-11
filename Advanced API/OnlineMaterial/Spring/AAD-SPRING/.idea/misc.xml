@@ -14,11 +14,16 @@
         <option value="$PROJECT_DIR$/03_DI_with_Spring/pom.xml" />
         <option value="$PROJECT_DIR$/03_DI_with_Springs/pom.xml" />
         <option value="$PROJECT_DIR$/_04_FullModevsLightMode/pom.xml" />
+        <option value="$PROJECT_DIR$/Configuration/pom.xml" />
+        <option value="$PROJECT_DIR$/05_Configuration/configurations/pom.xml" />
+        <option value="$PROJECT_DIR$/RuntimeValueInjection/RuntimeValueInjection/pom.xml" />
+        <option value="$PROJECT_DIR$/05_Configuration/05_configurations/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
       <set>
         <option value="$PROJECT_DIR$/03_DI_with_Spring/pom.xml" />
+        <option value="$PROJECT_DIR$/Configuration/pom.xml" />
       </set>
     </option>
   </component>

@@ -13,27 +13,27 @@ public class Configuration {
 
 
 //    @Bean
-    public SpringBeanOne getSpringBeanOne(){
-//        Inter bean dependencies innovcation
-        // what is the inter bean innvocation
-        // why we need to use it
-        SpringBeanTwo bean01 = getSpringBeanTwo();
-        SpringBeanTwo bean02 = getSpringBeanTwo();
-        System.out.println(bean01);
-        System.out.println(bean02);
-        return new SpringBeanOne();
-    }
-    @Bean
-    public SpringBeanTwo getSpringBeanTwo(){
-        return new SpringBeanTwo();
-    }
-
-    @Bean
-    public SpringBeanThree getSpringBeanThree(SpringBeanTwo springBeanTwo){
-        System.out.println(springBeanTwo);
-        System.out.println(springBeanTwo);
-        return new SpringBeanThree();
-    }
+//    public SpringBeanOne getSpringBeanOne(){
+////        Inter bean dependencies innovcation
+//        // what is the inter bean innvocation
+//        // why we need to use it
+//        SpringBeanTwo bean01 = getSpringBeanTwo();
+//        SpringBeanTwo bean02 = getSpringBeanTwo();
+//        System.out.println(bean01);
+//        System.out.println(bean02);
+//        return new SpringBeanOne();
+//    }
+//    @Bean
+//    public SpringBeanTwo getSpringBeanTwo(){
+//        return new SpringBeanTwo();
+//    }
+//
+//    @Bean
+//    public SpringBeanThree getSpringBeanThree(SpringBeanTwo springBeanTwo){
+//        System.out.println(springBeanTwo);
+//        System.out.println(springBeanTwo);
+//        return new SpringBeanThree();
+//    }
 
 
 }

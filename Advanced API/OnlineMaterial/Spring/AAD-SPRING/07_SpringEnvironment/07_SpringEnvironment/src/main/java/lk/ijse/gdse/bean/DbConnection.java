@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 
+import javax.sql.DataSource;
+
 @Component
 public class DbConnection implements InitializingBean {
 
@@ -34,5 +36,7 @@ public class DbConnection implements InitializingBean {
         System.out.println(environment.getProperty("user.db.password"));// null not error
 
         System.out.println(environment.getRequiredProperty("user.db.driverClassNam"));// if key has not found exception is pop up
+
     }
+
 }

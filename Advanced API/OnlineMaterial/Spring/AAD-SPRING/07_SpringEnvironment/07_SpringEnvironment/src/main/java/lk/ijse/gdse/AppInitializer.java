@@ -16,17 +16,17 @@ public class AppInitializer {
 
 //        get system variable
 //        System.getenv();
-        Map<String, String> getenv = System.getenv();
-        for (String key: getenv.keySet()) {
-            System.out.println(key+" : "+getenv.get(key));
-        }
+//        Map<String, String> getenv = System.getenv();
+//        for (String key: getenv.keySet()) {
+//            System.out.println(key+" : "+getenv.get(key));
+//        }
 
         //get java environmental variable
 //        System.getProperty()
 
-        Properties properties = System.getProperties();
-        for (Object key : properties.keySet()){
-            System.out.println(key+" : "+properties.get(key));
-        }
+//        Properties properties = System.getProperties();
+//        for (Object key : properties.keySet()){
+//            System.out.println(key+" : "+properties.get(key));
+//        }
     }
 }

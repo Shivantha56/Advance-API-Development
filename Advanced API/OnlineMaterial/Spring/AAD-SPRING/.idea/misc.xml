@@ -18,12 +18,16 @@
         <option value="$PROJECT_DIR$/05_Configuration/configurations/pom.xml" />
         <option value="$PROJECT_DIR$/RuntimeValueInjection/RuntimeValueInjection/pom.xml" />
         <option value="$PROJECT_DIR$/05_Configuration/05_configurations/pom.xml" />
+        <option value="$PROJECT_DIR$/RuntimeValueInjection/06_SpringEnvironment/SpringEnvironment/pom.xml" />
+        <option value="$PROJECT_DIR$/_08_/pom.xml" />
+        <option value="$PROJECT_DIR$/01_Core/07_SpringEnvironment/ssddd/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
       <set>
         <option value="$PROJECT_DIR$/03_DI_with_Spring/pom.xml" />
         <option value="$PROJECT_DIR$/Configuration/pom.xml" />
+        <option value="$PROJECT_DIR$/_08_/pom.xml" />
       </set>
     </option>
   </component>

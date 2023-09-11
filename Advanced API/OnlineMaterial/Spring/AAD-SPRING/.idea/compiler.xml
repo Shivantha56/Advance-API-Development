@@ -7,16 +7,20 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="03_DI_with_Springs" />
-        <module name="06_RuntimeValueInjection" />
         <module name="05_configurations" />
+        <module name="_08_" />
         <module name="Configuration" />
         <module name="02_Bean_LifCycle" />
+        <module name="ssddd" />
         <module name="Core" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="03_DI_with_Spring" target="11" />
       <module name="04_FullModevsLightMode" target="11" />
+      <module name="06_RuntimeValueInjection" target="11" />
+      <module name="07_SpringEnvironment" target="11" />
+      <module name="_08_" target="11" />
       <module name="Configuration" target="11" />
       <module name="ddd" target="11" />
       <module name="disisi" target="11" />

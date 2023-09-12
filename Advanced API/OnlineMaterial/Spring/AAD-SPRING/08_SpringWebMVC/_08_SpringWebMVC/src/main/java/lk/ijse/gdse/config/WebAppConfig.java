@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @Configuration
-@ComponentScan(basePackages = "lk.ijse.gdse.bean")
+@ComponentScan(basePackages = {"lk.ijse.gdse.bean","lk.ijse.gdse.controller"})
 @EnableWebMvc
 public class WebAppConfig {
 }

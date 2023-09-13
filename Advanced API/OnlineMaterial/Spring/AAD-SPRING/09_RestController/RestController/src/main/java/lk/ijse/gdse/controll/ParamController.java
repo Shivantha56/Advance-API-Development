@@ -24,5 +24,10 @@ public class ParamController {
         System.out.println(name+" "+mySalary);
         return "param test 03";
     }
+    @GetMapping(path = ("one"),params = {"name","salary"})
+    public String test04(String name, @RequestParam("salary") double mySalary) {
+        System.out.println(name+" "+mySalary);
+        return "param test 03";
+    }
 
 }

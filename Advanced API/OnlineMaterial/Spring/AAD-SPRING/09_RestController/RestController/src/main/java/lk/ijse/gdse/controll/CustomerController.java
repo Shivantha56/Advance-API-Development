@@ -6,11 +6,11 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("customer")
 public class CustomerController {
 
-    @GetMapping//handler method
-    public String getAllCustomer(){
+    @GetMapping//handler mapping
+    public String getAllCustomer(){ //handler method
         return "get customer success";
     }
-    @GetMapping//handler method
+    @GetMapping(path = "search")//request narrow down
     public String searchCustomer(){
         return "search customer success";
     }

@@ -2,7 +2,6 @@
   <artifact type="war" name="web">
     <output-path>$PROJECT_DIR$/out/artifacts/web</output-path>
     <root id="archive" name="web.war">
-      <element id="javaee-facet-resources" facet="_08_SpringWebMVC/web/Web" />
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
           <element id="module-output" name="_08_SpringWebMVC" />
@@ -18,6 +17,7 @@
           <element id="library" level="project" name="Maven: org.springframework:spring-web:5.3.19" />
         </element>
       </element>
+      <element id="javaee-facet-resources" facet="_08_SpringWebMVC/web/Web" />
     </root>
   </artifact>
 </component>

@@ -6,8 +6,10 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @EnableWebMvc
 @Configuration
-@ComponentScan(basePackages = "lk.ijse.gdse")
+//@ComponentScan(basePackages = "lk.ijse.gdse")
 public class WebAppConfig {
 
-
+    public WebAppConfig() {
+        System.out.println("This is the webAppconfig");
+    }
 }
